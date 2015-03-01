@@ -27,10 +27,10 @@ then
 else
 	echo "$file not found."
 	echo "Downloading $file"
-    wget -O OpenCV-2.4.9.zip http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.9/opencv-2.4.9.zip/download
-    echo "Installing OpenCV 2.4.9"
-    unzip OpenCV-2.4.9.zip
+    	wget -O OpenCV-2.4.9.zip http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.9/opencv-2.4.9.zip/download
 fi
+echo "Installing OpenCV 2.4.9"
+unzip OpenCV-2.4.9.zip
 cd opencv-2.4.9
 mkdir build
 cd build
