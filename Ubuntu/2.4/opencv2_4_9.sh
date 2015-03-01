@@ -20,10 +20,12 @@ sudo apt-get -y install libqt4-dev libgtk2.0-dev
 sudo apt-get -y install libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev
 sudo apt-get -y install x264 v4l-utils ffmpeg
 sudo apt-get -y install libgtk2.0-dev
-echo "Downloading OpenCV 2.4.9"
-wget -O OpenCV-2.4.9.zip http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.9/opencv-2.4.9.zip/download
-echo "Installing OpenCV 2.4.9"
-unzip OpenCV-2.4.9.zip
+if [ ! -d opencv-2.4.9 ]; then
+    echo "Downloading OpenCV 2.4.9"
+    wget -O OpenCV-2.4.9.zip http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.9/opencv-2.4.9.zip/download
+    echo "Installing OpenCV 2.4.9"
+    unzip OpenCV-2.4.9.zip
+fi
 cd opencv-2.4.9
 mkdir build
 cd build
