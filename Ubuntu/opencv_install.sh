@@ -26,11 +26,16 @@ echo "--- Installing OpenCV" $version
 echo "--- Installing Dependencies"
 source dependencies.sh
 
-echo "--- Downloading OpenCV" $version
 mkdir -p $dldir
 cd $dldir
-wget -O $downloadfile http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/$version/$downloadfile/download
-
+if [ -f "$downloadfile" ]
+then
+	echo "$downloadfile found."
+else
+	echo "$downloadfile not found."
+	echo "--- Downloading OpenCV" $version
+    wget -O $downloadfile http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/$version/$downloadfile/download
+fi
 echo "--- Installing OpenCV" $version
 echo $downloadfile | grep ".zip"
 if [ $? -eq 0 ]; then
