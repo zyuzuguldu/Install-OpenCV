@@ -21,6 +21,10 @@ if ! sudo true; then
 fi
 set -e
 
+repo=.`dirname $0`/../repo/
+echo $repo
+exit 1
+
 echo "--- Installing OpenCV" $version
 
 echo "--- Installing Dependencies"
