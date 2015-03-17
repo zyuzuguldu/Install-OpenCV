@@ -21,9 +21,7 @@ if ! sudo true; then
 fi
 set -e
 
-repo=.`dirname $0`/../repo/
-echo $repo
-exit 1
+repo="${PWD%/*}/repo"
 
 echo "--- Installing OpenCV" $version
 
@@ -32,20 +30,20 @@ source dependencies.sh
 
 mkdir -p $dldir
 cd $dldir
-if [ -f "../repo/$downloadfile" ]
+if [ -f "$repo/$downloadfile" ]
 then
-	echo "../repo/$downloadfile found."
+	echo "$repo/$downloadfile found."
 else
-	echo "../repo/$downloadfile not found."
+	echo "$repo/$downloadfile not found."
 	echo "--- Downloading OpenCV" $version
-        wget -O ../repo/$downloadfile http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/$version/$downloadfile/download
+        wget -O $repo/$downloadfile http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/$version/$downloadfile/download
 fi
 echo "--- Installing OpenCV" $version
-echo ../repo/$downloadfile | grep ".zip"
+echo $repo/$downloadfile | grep ".zip"
 if [ $? -eq 0 ]; then
-    unzip ../repo/$downloadfile
+    unzip $repo/$downloadfile
 else
-    tar -xvf ../repo/$downloadfile
+    tar -xvf $repo/$downloadfile
 fi
 cd opencv-$version
 mkdir build
