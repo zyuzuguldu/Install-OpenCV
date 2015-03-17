@@ -28,20 +28,20 @@ source dependencies.sh
 
 mkdir -p $dldir
 cd $dldir
-if [ -f "$downloadfile" ]
+if [ -f "../repo/$downloadfile" ]
 then
-	echo "$downloadfile found."
+	echo "../repo/$downloadfile found."
 else
-	echo "$downloadfile not found."
+	echo "../repo/$downloadfile not found."
 	echo "--- Downloading OpenCV" $version
-    wget -O $downloadfile http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/$version/$downloadfile/download
+        wget -O ../repo/$downloadfile http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/$version/$downloadfile/download
 fi
 echo "--- Installing OpenCV" $version
-echo $downloadfile | grep ".zip"
+echo ../repo/$downloadfile | grep ".zip"
 if [ $? -eq 0 ]; then
-    unzip $downloadfile
+    unzip ../repo/$downloadfile
 else
-    tar -xvf $downloadfile
+    tar -xvf ../repo/$downloadfile
 fi
 cd opencv-$version
 mkdir build
